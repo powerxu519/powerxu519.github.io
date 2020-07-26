@@ -284,12 +284,39 @@
         
           <div class="tag-cloud">
             <div class="tag-cloud-title">
+                
+                
+                
+                    
+                
+                
+                
+                    
+                
+                
                 目前共计 2 个标签
             </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/network/" style="font-size: 12px; color: #ccc">network</a> <a href="/tags/python/" style="font-size: 30px; color: #111">python</a>
+
+            <div class="tag-cloud-tags" id="tags">
+                
+                <a href="/tags/network/" style="font-size: 30px; color: #fff">network</a> <a href="/tags/python/" style="font-size: 30px; color: #fff">python</a>
+                             
             </div>
           </div>
+        <script type="text/javascript">
+            var alltags=document.getElementById('tags');
+            var tags=alltags.getElementsByTagName('a');
+
+            for (var i = tags.length - 1; i >= 0; i--) {
+                var r=Math.floor(Math.random()*75+130);
+                var g=Math.floor(Math.random()*75+100);
+                var b=Math.floor(Math.random()*75+80);
+                tags[i].style.background = "rgb("+r+","+g+","+b+")";
+            }
+        </script>
+
+
+
         
       </div>
       
@@ -319,6 +346,8 @@
       <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
+
+
 
   <aside id="sidebar" class="sidebar">
     
@@ -410,8 +439,23 @@
 
       
 
+  
+
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+<div class="widget-wrap">
+    <h3 class="widget-title">标签云 Cloud</h3>
+    <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas width="200" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">2</span></li></ul>
+        </canvas>
     </div>
-  </aside>
+</div>
+
+
+
+</div>
+</aside>
 
 
         
