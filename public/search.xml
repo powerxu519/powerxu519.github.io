@@ -313,22 +313,53 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/07/21/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+    <title>hexo博客之搭建</title>
+    <url>/2020/04/29/hexo%E5%8D%9A%E5%AE%A2%E4%B9%8B%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="hexo博客搭建-无坑版"><a href="#hexo博客搭建-无坑版" class="headerlink" title="hexo博客搭建-无坑版"></a>hexo博客搭建-无坑版</h1><blockquote>
+<blockquote>
+<p><strong>本文基于ubantu16.04下操作</strong></p>
+</blockquote>
+</blockquote>
+<h2 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h2><h3 id="git安装"><a href="#git安装" class="headerlink" title="git安装"></a>git安装</h3><a id="more"></a>
+<ul>
+<li><p>通过包管理器安装,这里附上<a href="https://git-scm.com/" target="_blank" rel="noopener">git官网</a><br><br>通过如下命令安装<br><br><code>sudo apt-get install git</code><br></p>
+</li>
+<li><p><em>注：通过这种⽅式安装的 Git 可能不是较新版的 Git，不过⼀般来说是够⽤的*</em></p>
+</li>
+<li><p>查看git是否安装成功<br><br><code>git --version</code><br><br><img src="/2020/04/29/hexo%E5%8D%9A%E5%AE%A2%E4%B9%8B%E6%90%AD%E5%BB%BA/%E6%9F%A5%E7%9C%8Bgit%E7%89%88%E6%9C%AC.jpg" alt="查看git版本"></p>
+</li>
+</ul>
+<h3 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h3><ol>
+<li>进入<a href="https://nodejs.org/" target="_blank" rel="noopener">node官网</a>进行下载，默认保存在Downloads文件夹下。<br></li>
+<li>在家目录下新建node文件夹并进入<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir node</span><br><span class="line">cd node</span><br></pre></td></tr></table></figure></li>
+<li>将下载的node-v12.18.2-linux-x64.tar.xz安装包解压到~/node 中<br><br><code>tar -xJvf ~/Downloads/node-v12.18.2-linux-x64.tar.xz</code><br></li>
+</ol>
+<p><strong>解压完成后，在~/node 目录下会出现一个node-v12.18.2-linux-x64的目录</strong><br>4. 配置node系统环境变量<br><br>编辑~/.bashrc 文件，在文件末尾追加如下信息<br><br><code>export PATH=/home/python/node/node-v12.18.2-linux-x64/bin:$PATH</code><br><br><img src="/2020/04/29/hexo%E5%8D%9A%E5%AE%A2%E4%B9%8B%E6%90%AD%E5%BB%BA/node%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE.jpg" alt="node"><br>5. 刷新环境变量，使其生效即可<br><br><code>source ~/.bashrc</code><br><br>6. 查看安装版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/04/29/hexo%E5%8D%9A%E5%AE%A2%E4%B9%8B%E6%90%AD%E5%BB%BA/node%E7%89%88%E6%9C%AC%E6%9F%A5%E7%9C%8B.jpg" alt="node"></p>
+<p><strong>至此准备工作就完成了，接下来就是hexo博客的安装啦！</strong><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/29/hexo%E5%8D%9A%E5%AE%A2%E4%B9%8B%E6%90%AD%E5%BB%BA/nice.jpg" alt="nice"></p>
+<h2 id="hexo博客的安装"><a href="#hexo博客的安装" class="headerlink" title="hexo博客的安装"></a>hexo博客的安装</h2><ol>
+<li>使用如下命令安装<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo -v #查看hexo版本</span><br></pre></td></tr></table></figure></li>
+<li>新建一个blog文件夹（以后hexo博客的目录），并进入<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir blog</span><br><span class="line">cd blog</span><br></pre></td></tr></table></figure></li>
+<li>初始化博客，启动本地博客，可在浏览器中查看<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo hexo init  #初始化博客</span><br><span class="line">hexo s  #启动本地博客</span><br></pre></td></tr></table></figure></li>
+<li>启动之后就可以在本地的4000端口查看了<a href="http://localhost:4000/" target="_blank" rel="noopener">localhost</a></li>
+<li>hexo的基本操作可以去官方文档查询（(hexo)[<a href="https://hexo.io/]）,下面创建一片新博文，并生成查看" target="_blank" rel="noopener">https://hexo.io/]）,下面创建一片新博文，并生成查看</a><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo n 第一篇博文   # 创建一篇博文</span><br><span class="line">hexo clean    # 清理hexo缓存</span><br><span class="line">hexo g     # hexo生成</span><br><span class="line">hexo s     # 本地查看</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>此时就可以看到刚才新建的博文了</strong><br>6. 部署到GitHub<br><strong>现在博客只能本地查看，可以利用GitHub部署到远端，外网就可以查看了</strong><br></p>
+<ul>
+<li>如果没有GitHub账号的话，先注册一哈（<a href="https://github.com/" target="_blank" rel="noopener">github</a>）</li>
+<li>在GitHub上创建一个新的仓库，名为 yourname.github.io (<strong>必须为这个名字</strong>)</li>
+<li>下载Git部署插件<br><code>npm install --save hexo-deployer-git</code></li>
+<li>在blog文件夹下找到_config.yml配置文件，在文件的最后修改成如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: https:&#x2F;&#x2F;github.com&#x2F;YourGithubName&#x2F;YourGithubName.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure></li>
+<li><em>其中repo为GitHub新建仓库的链接，并且：后有一个空格*</em></li>
+<li>将本地的hexo博客部署到远端<br><code>hexo d</code><br></li>
+<li><a href="https://YourGithubName.github.io/" target="_blank" rel="noopener">https://YourGithubName.github.io/</a> #访问这个地址可以查看博客*</li>
+</ul>
+<p>如此操作成功之后，博客就搭建完成了，至于美化博客和文章写作就各显神通啦。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/04/29/hexo%E5%8D%9A%E5%AE%A2%E4%B9%8B%E6%90%AD%E5%BB%BA/%E5%8A%A0%E6%B2%B9.jpg" alt="加油"><br><br>（配置时如有问题可以联系博主，也可以在下方留言。）</p>
 ]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title>计算机网络基础</title>
