@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="共勉" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Django 框架  本文基于Linux环境下操作   MVT框架 M：Model 模型&amp;emsp;&amp;emsp;作用：和后台数据库进行交互。 V：View：视图&amp;emsp;&amp;emsp;&amp;nbsp;作用：接受浏览器请求，进行处理并与模型和模板进行交互，返回应答。 T: Template 模板&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;emsp;作用：产生html页面。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django">
+<meta property="og:url" content="http://www.powerxu.cn/2019/07/23/Django/index.html">
+<meta property="og:site_name" content="共勉">
+<meta property="og:description" content="Django 框架  本文基于Linux环境下操作   MVT框架 M：Model 模型&amp;emsp;&amp;emsp;作用：和后台数据库进行交互。 V：View：视图&amp;emsp;&amp;emsp;&amp;nbsp;作用：接受浏览器请求，进行处理并与模型和模板进行交互，返回应答。 T: Template 模板&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;emsp;作用：产生html页面。">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87-1.jpg">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%872.jpg">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%873.jpg">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/%E6%96%97%E5%9B%BE1.jpg">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%874.png">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/%E6%96%97%E5%9B%BE2.jpg">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%875.jpg.png">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%876.jpg">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%877.png">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%878.png">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%879.png">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%8710.png">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%8711.png">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%8712.png">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%8713.png">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/%E6%96%97%E5%9B%BE3.jpg">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%876.jpg">
+<meta property="og:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%8714.png">
+<meta property="article:published_time" content="2019-07-23T07:21:52.000Z">
+<meta property="article:modified_time" content="2020-07-23T07:55:04.979Z">
+<meta property="article:author" content="Powerxu">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.powerxu.cn/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87-1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.powerxu.cn/2019/07/23/Django/"/>
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e9ab0500"
+    });
+  daovoice('update');
+  </script>
+
+  <title>Django | 共勉</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">共勉</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.powerxu.cn/2019/07/23/Django/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Powerxu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="共勉">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Django</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-23T15:21:52+08:00">
+                2019-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/23/Django/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/Django/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+           
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Django-框架"><a href="#Django-框架" class="headerlink" title="Django 框架"></a>Django 框架</h1><blockquote>
+<blockquote>
+<p><strong>本文基于Linux环境下操作</strong></p>
+</blockquote>
+</blockquote>
+<h2 id="MVT框架"><a href="#MVT框架" class="headerlink" title="MVT框架"></a>MVT框架</h2><ul>
+<li>M：Model <strong>模型</strong>&emsp;&emsp;作用：和后台数据库进行交互。</li>
+<li>V：View：<strong>视图</strong>&emsp;&emsp;&nbsp;作用：接受浏览器请求，进行处理并与模型和模板进行交互，返回应答。</li>
+<li>T: Template <strong>模板</strong>&nbsp;&nbsp;&nbsp;&emsp;作用：产生html页面。<a id="more"></a>
+</li>
+</ul>
+<hr>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><ol>
+<li><strong>安装虚拟环境</strong>&nbsp;(仅仅只是Python环境的复制版本，并不是另一套系统)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install virtualenv  # 利用pip下载virtualenv包</span><br></pre></td></tr></table></figure></li>
+<li><strong>安装虚拟环境扩展包</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install virtualenvwrapper</span><br></pre></td></tr></table></figure></li>
+<li><strong>编辑家目录下面的.bashrc文件，添加下面两行。</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export WORKON_HOME&#x3D;$HOME&#x2F;.virtualenvs</span><br><span class="line">source &#x2F;usr&#x2F;local&#x2F;bin&#x2F;virtualenvwrapper.sh</span><br></pre></td></tr></table></figure></li>
+<li><strong>使用下面的命令使虚拟环境生效</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bashrc</span><br></pre></td></tr></table></figure></li>
+<li><strong>创建虚拟环境</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkvirtualenv 虚拟环境名  # 此时为Python2的解释器创建</span><br><span class="line">mkvirtualenv -p python3 bj11_py3</span><br><span class="line">workon 虚拟环境名  # 进入虚拟环境工作</span><br><span class="line">workon 空格 + 两个tab键  # 查看主机上所有的虚拟环境</span><br><span class="line">deactivate  # 退出虚拟环境</span><br><span class="line">rmvirtualenv 虚拟环境名  #删除虚拟环境</span><br></pre></td></tr></table></figure></li>
+<li><strong>安装Django环境</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install django&#x3D;&#x3D;1.8.2  # 注意：不能使用sudo安装，sudo会安装到真是的主机环境上，而不是虚拟环境中</span><br><span class="line">pip list  # 可以查看虚拟环境中安装了哪些python包</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h2 id="项目创建"><a href="#项目创建" class="headerlink" title="项目创建"></a>项目创建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">django-admin startproject 项目名称</span><br></pre></td></tr></table></figure>
+<p><strong><em>注意：创建应用必须先进入虚拟环境。</em></strong><br><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%87-1.jpg" alt="1"></p>
+<h4 id="各个文件的说明"><a href="#各个文件的说明" class="headerlink" title="各个文件的说明"></a>各个文件的说明</h4><ul>
+<li>_ <em>init</em> _.py:说明该项目是一个Python包</li>
+<li>settings.py:项目配置文件</li>
+<li>urls.py:进行url路由的配置</li>
+<li>wsgi.py:web服务器和Django交互的入口</li>
+<li>manage.py:项目的管理文件</li>
+</ul>
+<p><em>注：一个项目由多个应用组成，每个应用完成一个特定的功能，在Django中，每个模块使用一个Django应用来开发</em></p>
+<p><strong>因此，接下来将了解如何创建一个应用</strong></p>
+<h2 id="应用创建"><a href="#应用创建" class="headerlink" title="应用创建"></a>应用创建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py startapp 应用名称   # 创建应用时需先进入到项目目录</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%872.jpg" alt="1"></p>
+<h4 id="各个文件的说明-1"><a href="#各个文件的说明-1" class="headerlink" title="各个文件的说明"></a>各个文件的说明</h4><ul>
+<li>_ <em>init_</em>.py:说明该目录是一个Python模块</li>
+<li>models.py:用来写和数据库交互的功能</li>
+<li>views.py:定义处理函数，称为视图函数</li>
+<li>tests.py:用来写测试代码的文件</li>
+<li>admin.py:网站后台管理的相关文件</li>
+</ul>
+<p><strong>在建立了项目与应用之后，还需要对应用进行注册，才能使该项目和该应用关联</strong></p>
+<h4 id="方法：修改settings-py中的INSTALLED-APPS配置项。"><a href="#方法：修改settings-py中的INSTALLED-APPS配置项。" class="headerlink" title="方法：修改settings.py中的INSTALLED_APPS配置项。"></a>方法：修改settings.py中的INSTALLED_APPS配置项。</h4><p><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%873.jpg" alt="1"></p>
+<h3 id="运行Django框架命令-在项目目录下进行"><a href="#运行Django框架命令-在项目目录下进行" class="headerlink" title="运行Django框架命令(在项目目录下进行)"></a>运行Django框架命令(在项目目录下进行)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py runserver</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>完成了上述动作之后就已经构建起了基本的Django的框架，接下来就可以向此框架中添加配置了！</em></strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2019/07/23/Django/%E6%96%97%E5%9B%BE1.jpg" alt="1"></p>
+<hr>
+<h2 id="ORM模型-对象——关系映射"><a href="#ORM模型-对象——关系映射" class="headerlink" title="ORM模型(对象——关系映射)"></a>ORM模型(对象——关系映射)</h2><p><strong>Django中内嵌了ORM框架，ORM的作用是将类和数据表进行关联，即只需要对类和对象进行操作就可以对数据库进行更改，并且ORM可以根据设计的类自动生成表。</strong></p>
+<p><strong>注意：在应用下的model.py文件中设计模型类时，该类必须继承models.Model类</strong><br><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%874.png" alt="1"></p>
+<p>如上图所示，bookinfo类继承了models.Model类，并且可以看出bookinfo有两种属性，分别是bittle和bpub_date,代表了图书的名称和出版日期。</p>
+<h2 id="模型类生成表"><a href="#模型类生成表" class="headerlink" title="模型类生成表"></a>模型类生成表</h2><p><strong>刚刚说到ORM可以根据模型类自动生成表，那么要如何操作呢，接下来就来看看.</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2019/07/23/Django/%E6%96%97%E5%9B%BE2.jpg" alt="1"></p>
+<ul>
+<li>生成迁移文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py makemigrations</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%875.jpg.png" alt="1"></p>
+<ul>
+<li>执行迁移文件生成表<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure></li>
+<li><em>生成表的默认格式：应用名_模型类名(小写)*</em></li>
+<li><strong>注意：先在生成的数据库是sqlite3数据库，如果你想看到图形化的数据库界面，可以安装sqliteman，使用如下命令*</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install sqliteman</span><br><span class="line">sqliteman     # 即可启动sqliteman查看图形化的sqlite数据库</span><br></pre></td></tr></table></figure>
+<h4 id="pip和apt-get的区别"><a href="#pip和apt-get的区别" class="headerlink" title="pip和apt-get的区别"></a>pip和apt-get的区别</h4>这里简单介绍一下二者的区别，apt-get一般用于安装软件，而pip是Python管理包的工具，通常用于进行Python包和模块的安装</li>
+</ul>
+<hr>
+<h2 id="通过模型类操作数据表"><a href="#通过模型类操作数据表" class="headerlink" title="通过模型类操作数据表"></a>通过模型类操作数据表</h2><p><strong>进入Python shell的命令</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py shell</span><br></pre></td></tr></table></figure>
+
+<p><em>应当先导入刚才在应用中建立的models类</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from 应用名.models import 类名</span><br></pre></td></tr></table></figure>
+
+<p><strong>以下为在相互shell终端中演示的例子：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">1) 向booktest_bookinfo表中插入一条数据。</span><br><span class="line">    b &#x3D; BookInfo() #定义一个BookInfo类的对象</span><br><span class="line">    b.btitle &#x3D;&#39;天龙八部&#39; #定义b对象的属性并赋值</span><br><span class="line">    b.bpub_date &#x3D; date(1990,10,11) </span><br><span class="line">    b.save() #才会将数据保存进数据库</span><br><span class="line"></span><br><span class="line">2）查询出booktest_bookinfo表中id为1的数据。</span><br><span class="line">    b &#x3D; BookInfo.objects.get(id&#x3D;1)</span><br><span class="line">     </span><br><span class="line">3）在上一步的基础上改变b对应图书的出版日期。</span><br><span class="line">    b.bpub_date &#x3D; date(1989,10,21)</span><br><span class="line">    b.save() #才会更新表格中的数据</span><br><span class="line"></span><br><span class="line">4）紧接上一步，删除b对应的图书的数据。</span><br><span class="line">    b.delete() #才会删除</span><br><span class="line"></span><br><span class="line">5）向booktest_heroInfo表中插入一条数据。</span><br><span class="line">    h &#x3D; HeroInfo()</span><br><span class="line">    h.hname &#x3D; &#39;郭靖&#39;</span><br><span class="line">    h.hgender &#x3D; False</span><br><span class="line">    h.hcomment &#x3D; ‘降龙十八掌’</span><br><span class="line">    b2 &#x3D; BookInfo.objects.get(id&#x3D;2)</span><br><span class="line">    h.hbook &#x3D; b2  #给关系属性赋值，英雄对象所属的图书对象</span><br><span class="line">    h.save() </span><br><span class="line"></span><br><span class="line">6）查询图书表里面的所有内容。</span><br><span class="line">    BookInfo.objects.all()</span><br><span class="line">    HeroInfo.objects.all()</span><br><span class="line">    </span><br><span class="line">7）查询出id为2的图书中所有英雄人物的信息。</span><br><span class="line">    b &#x3D; BookInfo.objects.get(id&#x3D;2)</span><br><span class="line">    b.heroinfo_set.all() #查询出b图书中所有英雄人物的信息</span><br></pre></td></tr></table></figure>
+<p><strong>多类之间的关系</strong><br><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%876.jpg" alt="1"></p>
+<hr>
+<h2 id="后台管理"><a href="#后台管理" class="headerlink" title="后台管理"></a>后台管理</h2><ol>
+<li>本地化</li>
+</ol>
+<p>进行语言和时区的本地化</p>
+<p>修改settings.py文件。<br><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%877.png" alt="1"></p>
+<ol start="2">
+<li>创建管理员<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py createsuperuser</span><br></pre></td></tr></table></figure></li>
+<li>注册模型类</li>
+</ol>
+<p>在应用下的admin.py中注册模型类。<br>告诉djang框架根据注册的模型类来生成对应表管理页面。<br><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%878.png" alt="1"></p>
+<hr>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><p><strong>在Django中，通过浏览器去请求一个页面时，使用视图函数来处理这个请求的，视图函数处理之后，要给浏览器返回页面内容。</strong></p>
+<h3 id="视图函数的使用"><a href="#视图函数的使用" class="headerlink" title="视图函数的使用"></a>视图函数的使用</h3><ul>
+<li>定义视图函数</li>
+</ul>
+<p><strong>视图函数定义在views.py中。</strong><br>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def index(request):</span><br><span class="line">    #  进行处理</span><br><span class="line">    return HttpResponse(&#39;hello python&#39;)</span><br></pre></td></tr></table></figure>
+<p>视图函数必须有一个参数request，进行处理之后，需要返回一个HttpResponse的类对象，hello python就是返回给浏览器显示的内容。</p>
+<ul>
+<li>进行URL配置</li>
+</ul>
+<p>url配置的目的是让建立url和视图函数的对应关系。</p>
+<p>url配置项定义在urlpatterns的列表中，每一个配置项都调用url函数。</p>
+<p>url函数有两个参数，第一个参数是一个正则表达式，第二个是对应的处理动作。</p>
+<p>配置url时，有两种语法格式：</p>
+<ol>
+<li>url(正则表达式，视图函数名)</li>
+<li>url(正则表达式，include(应用中的urls文件))</li>
+</ol>
+<p><strong>实际在配置url时，首先在项目的urls.py文件中添加配置项时，并不写具体的url和视图函数之间的对应关系，而是包含具体应用的urls.py文件，在应用的urls.py文件中写url和视图函数的对应关系。</strong></p>
+<p>URL配置方式<br><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%879.png" alt="1"></p>
+<h3 id="URL的匹配过程"><a href="#URL的匹配过程" class="headerlink" title="URL的匹配过程"></a>URL的匹配过程</h3><p><strong>在项目的urls.py文件中包含具体应用的urls.py文件，应用的urls.py文件中写url和视图函数的对应关系。</strong></p>
+<h3 id="匹配方式和运行机制"><a href="#匹配方式和运行机制" class="headerlink" title="匹配方式和运行机制"></a>匹配方式和运行机制</h3><p><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%8710.png" alt="1"></p>
+<p>当用户输入如<a href="http://127.0.0.1:8000/aindex时，" target="_blank" rel="noopener">http://127.0.0.1:8000/aindex时，</a> <strong>去除域名和最前面的/，剩下aindex，拿aindex字符串到项目的urls文件中进行匹配，配置成功之后，去除匹配的a字符，那剩下的index字符串继续到项目的urls文件中进行正则匹配，匹配成功之后执行视图函数index</strong> ，index视图函数返回内容hello python给浏览器来显示。</p>
+<hr>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p><em>不仅仅是一个HTML文件</em></p>
+<h3 id="模板文件的使用"><a href="#模板文件的使用" class="headerlink" title="模板文件的使用"></a>模板文件的使用</h3><ol>
+<li>创建模板文件夹(templates文件夹)</li>
+<li>配置模板目录</li>
+</ol>
+<p><strong>在项目文件中修改settings文件，将其TEMPLATES下的’DIRS’改为[os.path.join(BASE_DIR, ‘templates’)]</strong></p>
+<p><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%8711.png" alt="1"></p>
+<p>其中BASE_DIR是项目的绝对路径</p>
+<ol start="3">
+<li>使用模板文件</li>
+</ol>
+<p><strong>在templates文件夹下建立与应用同名的文件夹，防止混淆</strong></p>
+<ul>
+<li>加载模板文件</li>
+</ul>
+<p>在模板目录下面获取HTML文件的内容，得到一个模板对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from django.templates import loader</span><br><span class="line">temp &#x3D; loader.get_template(&#39;相对于templates文件的相对路径&#39;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定义模板上下文<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from django.templates import RequestContext</span><br><span class="line">context &#x3D; RequestContext(request, &#123;一个字典，替代模板中变量的值&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>向模板文件中传递数据</p>
+<ul>
+<li>模板渲染</li>
+</ul>
+<p>得到一个标准的HTML文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res_html &#x3D; temp.render(context)    # 渲染完成的HTML内容</span><br><span class="line">return HttpResponse(res_html)</span><br></pre></td></tr></table></figure>
+
+<p><strong>以上三点在Django内部已经进行了封装，可直接调用render函数返回</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return render(request, &#39;相对于templates文件的相对路径&#39;, &#123;一个字典，替代模板中变量的值&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="在模板文件中定义变量"><a href="#在模板文件中定义变量" class="headerlink" title="在模板文件中定义变量"></a>在模板文件中定义变量</h3><ol>
+<li>模板变量的使用 ： </li>
+<li>for循环的使用 ： {% for i in list %}
+
+</li>
+</ol>
+{% empty %}   # 当for循环中没有任何变量时显示的数据
+
+{% endfor %}
+
+<hr>
+<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><h3 id="Django-ORM"><a href="#Django-ORM" class="headerlink" title="Django ORM"></a>Django ORM</h3><p><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%8712.png" alt="1"></p>
+<p><strong>O：(objects)-&gt;类和对象。</strong><br><br><strong>R：(Relation)-&gt;关系，关系数据库中的表格。</strong><br><br><strong>M：（Mapping）-&gt;映射。</strong></p>
+<h3 id="Django-ORM-框架的功能"><a href="#Django-ORM-框架的功能" class="headerlink" title="Django ORM 框架的功能"></a>Django ORM 框架的功能</h3><ol>
+<li>建立模型类和表之间的对应关系，允许我们通过面向对象的方式操作数据库</li>
+<li>根据设计的模型类生成数据库的表格</li>
+<li>通过方便的配置就可以进行数据库的切换</li>
+</ol>
+<p><em>在此之前使用的数据库都是Django默认的sqlite数据库，接下来我们将对Django配置进行修改，改为熟悉的MySQL数据库</em></p>
+<h3 id="MySQL数据库配置"><a href="#MySQL数据库配置" class="headerlink" title="MySQL数据库配置"></a>MySQL数据库配置</h3><p><strong>修改settings.py中的DATABASES。</strong><br><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%8713.png" alt="1"><br><strong><em>注意：django框架不会自动帮我们生成mysql数据库，所以我们需要自己去创建。</em></strong></p>
+<p><strong>切换mysql数据库之后不能启动服务器：</strong><br><br>安装mysqlPython包: <br><br>python2：<br>  pip install mysql-python<br><br>python3:<br>安装pymysql:<br>  pip install pymysql<br><br>在test1/<strong>init</strong>.py中加如下内容：<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></table></figure>
+<p>进行如上操作之后便完成了MySQL数据库的配置！</p>
+<p><img src="/2019/07/23/Django/%E6%96%97%E5%9B%BE3.jpg" alt="1"></p>
+<h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><p>最后在讲解一下重定向，当浏览器点击某一功能时，仍需要返回原网址。则需使用重定向。</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">return HttpResponseRedirect(&#39;&#x2F;当前网址&#39;)</span><br><span class="line"></span><br><span class="line">from django.shortcuts import redirct</span><br><span class="line">return redirect(&#39;&#x2F;当前网址&#39;)    # 使用Django中封装好的重定向函数redirect返回</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="字段属性和选项"><a href="#字段属性和选项" class="headerlink" title="字段属性和选项"></a>字段属性和选项</h2><p><strong>属性命名限制：</strong></p>
+<ol>
+<li>不能是python的保留关键字。</li>
+<li>不允许使用连续的下划线，这是由django的查询方式决定的。</li>
+<li>定义属性时需要指定字段类型，通过字段类型的参数指定选项，语法如下：<br>属性名=models.字段类型(选项)</li>
+</ol>
+<h3 id="字段类型"><a href="#字段类型" class="headerlink" title="字段类型"></a>字段类型</h3><p><strong>使用时需要引入django.db.models包</strong>，字段类型如下：<br><br><strong>AutoField</strong>：自动增长的IntegerField，通常不用指定，不指定时Django会自动创建属性名为id的自动增长属性。<br><br><strong>BooleanField</strong>：布尔字段，值为True或False。<br><br><strong>NullBooleanField</strong>：支持Null、True、False三种值。<br><br><strong>CharField(max_length=字符长度)</strong>：字符串。<br>参数max_length表示最大字符个数。<br><br><strong>TextField</strong>：大文本字段，一般超过4000个字符时使用。<br><br><strong>IntegerField</strong>：整数。<br><br><strong>DecimalField(max_digits=None, decimal_places=None)</strong>：十进制浮点数。<br>参数max_digits表示总位数。<br>参数decimal_places表示小数位数。<br><br><strong>FloatField</strong>：浮点数。<br><br><strong>DateField([auto_now=False, auto_now_add=False])</strong>：日期。<br><br><em>参数auto_now表示每次保存对象时，自动设置该字段为当前时间，用于”最后一次修改”的时间戳，它总是使用当前日期，默认为false。</em><br><br><em>参数auto_now_add表示当对象第一次被创建时自动设置当前时间，用于创建的时间戳，它总是使用当前日期，默认为false。</em><br><br><strong>参数auto_now_add和auto_now是相互排斥的，组合将会发生错误。</strong><br><br><strong>imeField</strong>：时间，参数同DateField。<br><br><strong>DateTimeField</strong>：日期时间，参数同DateField。<br><br><strong>FileField</strong>：上传文件字段。<br><br><strong>ImageField</strong>：继承于FileField，对上传的内容进行校验，确保是有效的图片。<br></p>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p><strong>通过选项实现对字段的约束，选项如下</strong>：<br><br><strong>null</strong>：如果为True，表示允许为空，默认值是False。<br><br><strong>blank</strong>：如果为True，则该字段允许为空白，默认值是False。<br><br><strong><em>对比：null是数据库范畴的概念，blank是表单验证证范畴的。</em></strong><br><br><strong>db_column</strong>：字段的名称，如果未指定，则使用属性的名称。<br><br><strong>db_index</strong>：若值为True, 则在表中会为此字段创建索引，默认值是False。<br><br><strong>default</strong>：默认值。<br><br><strong>primary_key</strong>：若为True，则该字段会成为模型的主键字段，默认值是False，一般作为AutoField的选项使用。<br><br><strong>unique</strong>：如果为True, 这个字段在表中必须有唯一值，默认值是False。<br></p>
+<hr>
+<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><h3 id="查看MySQL的日志文件"><a href="#查看MySQL的日志文件" class="headerlink" title="查看MySQL的日志文件"></a>查看MySQL的日志文件</h3><ol>
+<li>sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf <strong>68 69行 注释取消</strong></li>
+<li>sudo service mysql restart 重启mysql服务</li>
+<li>/var/log/mysql/mysql.log #mysql操作的记录文件。</li>
+<li>sudo tail -f /var/log/mysql/mysql.log #实时查看mysql文件的内容。</li>
+</ol>
+<h3 id="查询MySQL数据库中数据的方法"><a href="#查询MySQL数据库中数据的方法" class="headerlink" title="查询MySQL数据库中数据的方法"></a>查询MySQL数据库中数据的方法</h3><p><strong>get()</strong>:返回表中满足条件的一条且只能有一条数据。<br><br>如果查到多条数据，则抛异常：MultipleObjectsReturned<br><br>查询不到数据，则抛异常：<br>DoesNotExist<br></p>
+<p><strong>all()</strong>:返回模型类对应表格中的所有数据。QuerySet类型，查询集<br></p>
+<p><strong>filter()</strong>:参数写查询条件，返回满足条件的数据。QuerySet<br><br><em>条件格式：模型类属性名__条件名=值</em></p>
+<h3 id="查询条件"><a href="#查询条件" class="headerlink" title="查询条件"></a>查询条件</h3><ol>
+<li><p>判等 exact。<br><br>例：查询编号为1的图书。<br><br>BookInfo.objects.get(id=1)<br><br>BookInfo.objects.get(id__exact=1)</p>
+</li>
+<li><p>模糊查询 contains<br><br>例：查询书名包含’传’的图书。<br><br>BookInfo.objects.filter(btitle__contains=’传’)<br><br>例：查询书名以’部’结尾的图书 endswith 开头:startswith<br><br>BookInfo.objects.filter(btitle__endswith=’部’)</p>
+</li>
+<li><p>空查询 isnull <em>(select * from booktest_bookinfo where title is not null)</em><br><br>例：查询书名不为空的图书。<br><br>BookInfo.objects.filte(btitle__isnull=False)</p>
+</li>
+<li><p>范围查询 in <em>(select * from booktest_bookinfo where id in (1,3,5))</em><br><br>例：查询编号为1或3或5的图书。<br><br>BookInfo.objects.filter(id__in = [1,3,5])</p>
+</li>
+<li><p>比较查询 <br><br>例：查询编号大于3的图书。gt(大于) lt(小于） gte(大于等于) lte(小于等于)<br><br>BookInfo.objects.filter(id__gt = 3)</p>
+</li>
+<li><p>日期查询<br><br>例：查询1980年发表的图书。<br><br>BookInfo.objects.filter(bpub_date__year=1980)<br><br>例：查询1980年1月1日后发表的图书。<br><br>from datetime import date<br>BookInfo.objects.filter(bpub_date__gt = date(1980,1,1))<br></p>
+</li>
+<li><p>exclude:返回不满足条件的数据。QuerySet<br><br>例：查询id不为3的图书信息。<br><br>BookInfo.objects.exclude(id=3)<br></p>
+</li>
+</ol>
+<h3 id="F对象"><a href="#F对象" class="headerlink" title="F对象"></a>F对象</h3><p><strong>作用：用于类属性之间的比较条件。</strong><br><br>使用之前需要先导入：<br><br><strong>from django.db.models import F</strong><br><br>例：查询图书阅读量大于评论量图书信息。<br><br>BookInfo.objects.filter(bread__gt = F(‘bcomment’))<br><br>例：查询图书阅读量大于2倍评论量图书信息。<br><br>BookInfo.objects.filter(bread__gt = F(‘bcomment’)*2)</p>
+<h3 id="Q对象"><a href="#Q对象" class="headerlink" title="Q对象"></a>Q对象</h3><p><strong>作用：用于查询时的逻辑条件。not and or，可以对Q对象进行&amp; | ~操作。</strong><br>使用之前需要先导入：<br><br><strong>from django.db.models import Q</strong><br><br>例：查询id大于3且阅读量大于30的图书的信息。<br><br>BookInfo.objects.filter(id__gt=3, bread__gt=30)<br><br>BookInfo.objects.filter(Q(id__gt=3)&amp;Q(bread__gt=30))<br><br>例：查询id大于3或者阅读量大于30的图书的信息。<br><br>BookInfo.objects.filter(Q(id__gt=3)|Q(bread__gt=30))<br><br>例：查询id不等于3图书的信息。<br><br>BookInfo.objects.filter(~Q(id=3))<br></p>
+<h3 id="排序-order-by-QuerySet"><a href="#排序-order-by-QuerySet" class="headerlink" title="排序 order_by QuerySet"></a>排序 <strong>order_by</strong> QuerySet</h3><p><strong>作用：进行查询结果进行排序。</strong><br><br>例：查询所有图书的信息，按照id从小到大进行排序。<br><br>BookInfo.objects.all().order_by(‘id’)<br><br>BookInfo.objects.order_by(‘id’)<br><br>例：查询所有图书的信息，按照id从大到小进行排序。<br><br>BookInfo.objects.all().order_by(<strong>‘-id’</strong>)<br><br>例：把id大于3的图书信息按阅读量从大到小排序显示；<br><br>BookInfo.objects.filter(id__gt=3).order_by(‘-bread’)</p>
+<h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><p><strong>作用：对查询结果进行聚合操作。</strong><br><br><strong>sum count max min avg</strong><br><br><strong>aggregate</strong>：调用这个函数来使用聚合。 返回值是一个字典<br><br>使用前需先导入聚合类： <br><br><strong>from django.db.models import Sum,Count,Max,Min,Avg</strong><br><br>例：查询所有图书的数目。Count<br><br>BookInfo.objects.aggregate(Count(‘id’))<br><br>返回值类型:<br>{‘id__count’: 5}<br><br>例：查询所有图书阅读量的总和。<br><br>BookInfo.objects.aggregate(Sum(‘bread’))<br><br>返回值类型：<br>{‘bread__sum’: 126}<br><br><strong>count函数 返回值是一个数字</strong><br><br><strong>作用：统计满足条件数据的数目。</strong><br><br>例：统计所有图书的数目。<br><br>BookInfo.objects.count()<br><br>例：统计id大于3的所有图书的数目。<br><br>BookInfo.objects.filter(id__gt=3).count()<br></p>
+<p><strong>查询相关函数返回值总结：</strong><br><br><strong>get</strong>:返回一个对象 <br><br><strong>all</strong>:QuerySet 返回所有数据<br><br><strong>filter</strong>:QuerySet 返回满足条件的数据<br><br><strong>exclude</strong>:QuerySet 返回不满条件的数据 <br><br><strong>order_by</strong>:QuerySet 对查询结果进行排序<br><br><strong>aggregate</strong>:字典 进行聚合操作<br><br><strong>count</strong>:数字 返回查询集中数据的数目<br><br>get,filter,exclude参数中可以写查询条件。<br></p>
+<h3 id="查询集"><a href="#查询集" class="headerlink" title="查询集"></a>查询集</h3><p><strong>all, filter, exclude, order_by调用这些函数会产生一个查询集，可以在查询集上继续调用这些函数。</strong><br>查询集特性：</p>
+<ol>
+<li>惰性查询：只有在实际使用查询集中的数据的时候才会发生对数据库的真正查询。</li>
+<li>缓存：当使用的是同一个查询集时，第一次的时候会发生实际数据库的查询，然后把结果缓存起来，之后再使用这个查询集时，使用的是缓存中的结果。<br>限制查询集：<br></li>
+</ol>
+<p><strong>可以对一个查询集进行取下标或者切片操作来限制查询集的结果。</strong><br><br>b[0]就是取出查询集的第一条数据，b[0:1].get()也可取出查询集的第一条数据。如果b[0]不存在，会抛出IndexError异常，如果b[0:1].get()不存在，会抛出DoesNotExist异常。多条时抛MultiObjectsReturned异常<br>对一个查询集进行切片操作会产生一个新的查询集，下标不允许为负数。<br><br><strong>exists</strong>:判断一个查询集中是否有数据。(True False)</p>
+<hr>
+<h2 id="模型类关系"><a href="#模型类关系" class="headerlink" title="模型类关系"></a>模型类关系</h2><h3 id="三种关系模式"><a href="#三种关系模式" class="headerlink" title="三种关系模式"></a>三种关系模式</h3><ol>
+<li>一对多关系<br><br>例：图书类-英雄类<br>models.ForeignKey() 定义在多的类中。</li>
+<li>多对多关系<br><br>例：新闻类-新闻类型类 体育新闻 国际<br><br>models.ManyToManyField() 定义在哪个类中都可以。</li>
+<li>一对一关系<br><br>例：员工基本信息类-员工详细信息类<br><br>models.OneToOneField() 定义在哪个类中都可以。<h3 id="关联查询-一对多"><a href="#关联查询-一对多" class="headerlink" title="关联查询(一对多)"></a>关联查询(一对多)</h3></li>
+</ol>
+<p><strong>在一对多关系中，一对应的类我们把它叫做一类，多对应的那个类我们把它叫做多类，我们把多类中定义的建立关联的类属性叫做关联属性。</strong><br><br>例：查询图书id为1的所有英雄的信息。<br><br>    book = BookInfo.objects.get(id=1)<br><br>    book.heroinfo_set.all()<br><br>通过模型类查询：<br><br>    <strong>HeroInfo.objects.filter(hbook_id=1)</strong><br><br>例：查询id为1的英雄所属图书信息。<br><br>    hero =HeroInfo.objects.get(id=1)<br><br>    hero.hbook<br><br>通过模型类查询：<br><br>    <strong>BookInfo.objects.filter(heroinfo__id=1)</strong><br><br>    <img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%876.jpg" alt="1"><br><strong>由一类的对象查询多类的时候：</strong><br><br>    一类的对象.多类名小写_set.all() #查询所用数据<br><br><strong>由多类的对象查询一类的时候：</strong><br><br>    多类的对象.关联属性  #查询多类的对象对应的一类的对象<br><br><strong>由多类的对象查询一类对象的id时候：</strong><br><br>    多类的对象. 关联属性_id<br><br><strong><em>通过模型类实现关联查询：</em></strong><br><br>例：查询图书信息，要求图书中英雄的描述包含’八’。<br><br>BookInfo.objects.filter(heroinfo__hcomment__contains=’八’)<br><br>例：查询图书信息，要求图书中的英雄的id大于3.<br><br>BookInfo.objects.filter(heroinfo__id__gt=3)<br><br>例：查询书名为“天龙八部”的所有英雄。<br><br>HeroInfo.objects.filter(hbook__btitle=’天龙八部’)<br><br><strong>通过多类的条件查询一类的数据：</strong><br><br>    一类名.objects.filter(多类名小写<strong>多类属性名</strong>条件名) <br><br><strong>通过一类的条件查询多类的数据：</strong><br><br>    多类名.objects.filter(关联属性<strong>一类属性名</strong>条件名)<br></p>
+<h3 id="插入，更新和删除"><a href="#插入，更新和删除" class="headerlink" title="插入，更新和删除"></a>插入，更新和删除</h3><p>  调用一个模型类对象的save方法的时候就可以实现对模型类对应数据表的插入和更新。<br><br>调用一个模型类对象的delete方法的时候就可以实现对模型类对应数据表数据的删除。</p>
+<h3 id="自关联"><a href="#自关联" class="headerlink" title="自关联"></a>自关联</h3><p><strong>自关联是一种特殊的一对多的关系。即在一个表中建立外键。</strong><br><br>注：mysql终端中批量执行sql语句：source areas.sql;</p>
+<h3 id="管理器"><a href="#管理器" class="headerlink" title="管理器"></a>管理器</h3><p>在查询语句中都会使用到<strong>类名.objects.方法</strong>，那么objects是什么呢？<br><br>objects是Django帮我自动生成的管理器对象，通过这个管理器可以实现对数据的查询。<br><br>objects是models.Manger类的一个对象。自定义管理器之后Django不再帮我们生成默认的objects管理器。</p>
+<ol>
+<li>自定义一个管理器类，这个类继承models.Manger类。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class BookInfoManager(models.Manager):</span><br></pre></td></tr></table></figure></li>
+<li>再在具体的模型类里定义一个自定义管理器类的对象。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object &#x3D; 自定义的管理器类()</span><br></pre></td></tr></table></figure>
+自定义管理器类的应用场景：</li>
+<li>改变查询的结果集。<br>比如调用BookInfo.books.all()返回的是没有删除的图书的数据。</li>
+<li>添加额外的方法。<br>管理器类中定义一个方法帮我们创建对应的模型类对象。<br>使用self.model()就可以创建一个跟自定义管理器对应的模型类对象。</li>
+</ol>
+<p><img src="/2019/07/23/Django/Django%E5%AD%A6%E4%B9%A0%E5%9B%BE%E7%89%8714.png" alt="1"></p>
+<h3 id="元选项"><a href="#元选项" class="headerlink" title="元选项"></a>元选项</h3><p>Django默认生成的表名：<br><br>    <strong>应用名小写_模型类名小写。</strong><br><br>元选项：<br><br>需要在模型类中定义一个元类Meta,在里面定义一个类属性db_table就可以指定表名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class Meta:</span><br><span class="line">    db_table &#x3D; &#39;表名&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>老板大气！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Powerxu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Powerxu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+        </div>
+        <script type="text/javascript">
+          var tagsall=document.getElementsByClassName("post-tags")
+          for (var i = tagsall.length - 1; i >= 0; i--){
+              var tags=tagsall[i].getElementsByTagName("a");
+              for (var j = tags.length - 1; j >= 0; j--) {
+                  var r=Math.floor(Math.random()*75+130);
+                  var g=Math.floor(Math.random()*75+100);
+                  var b=Math.floor(Math.random()*75+80);
+                  tags[j].style.background = "rgb("+r+","+g+","+b+")";
+              }
+          }                        
+          </script>
+
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" rel="prev" title="计算机网络基础">
+                计算机网络基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="Powerxu" />
+            
+              <p class="site-author-name" itemprop="name">Powerxu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/powerxu519" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:powerxu0519@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Django-框架"><span class="nav-text">Django 框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVT框架"><span class="nav-text">MVT框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境配置"><span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目创建"><span class="nav-text">项目创建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#各个文件的说明"><span class="nav-text">各个文件的说明</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用创建"><span class="nav-text">应用创建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#各个文件的说明-1"><span class="nav-text">各个文件的说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法：修改settings-py中的INSTALLED-APPS配置项。"><span class="nav-text">方法：修改settings.py中的INSTALLED_APPS配置项。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行Django框架命令-在项目目录下进行"><span class="nav-text">运行Django框架命令(在项目目录下进行)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ORM模型-对象——关系映射"><span class="nav-text">ORM模型(对象——关系映射)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型类生成表"><span class="nav-text">模型类生成表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pip和apt-get的区别"><span class="nav-text">pip和apt-get的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过模型类操作数据表"><span class="nav-text">通过模型类操作数据表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后台管理"><span class="nav-text">后台管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图"><span class="nav-text">视图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#视图函数的使用"><span class="nav-text">视图函数的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL的匹配过程"><span class="nav-text">URL的匹配过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配方式和运行机制"><span class="nav-text">匹配方式和运行机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板"><span class="nav-text">模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模板文件的使用"><span class="nav-text">模板文件的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在模板文件中定义变量"><span class="nav-text">在模板文件中定义变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型"><span class="nav-text">模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Django-ORM"><span class="nav-text">Django ORM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django-ORM-框架的功能"><span class="nav-text">Django ORM 框架的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL数据库配置"><span class="nav-text">MySQL数据库配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重定向"><span class="nav-text">重定向</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字段属性和选项"><span class="nav-text">字段属性和选项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字段类型"><span class="nav-text">字段类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选项"><span class="nav-text">选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询"><span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看MySQL的日志文件"><span class="nav-text">查看MySQL的日志文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询MySQL数据库中数据的方法"><span class="nav-text">查询MySQL数据库中数据的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询条件"><span class="nav-text">查询条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F对象"><span class="nav-text">F对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q对象"><span class="nav-text">Q对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序-order-by-QuerySet"><span class="nav-text">排序 order_by QuerySet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合函数"><span class="nav-text">聚合函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询集"><span class="nav-text">查询集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型类关系"><span class="nav-text">模型类关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三种关系模式"><span class="nav-text">三种关系模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联查询-一对多"><span class="nav-text">关联查询(一对多)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入，更新和删除"><span class="nav-text">插入，更新和删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自关联"><span class="nav-text">自关联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理器"><span class="nav-text">管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元选项"><span class="nav-text">元选项</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+  
+
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+<div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas width="200" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">2</span></li></ul>
+        </canvas>
+    </div>
+</div>
+
+
+
+</div>
+</aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Powerxu</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=66575158";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'ACP8nNHfu0oikFO5u00bkV7S-gzGzoHsz',
+        appKey: '5EzDEnCE2p1LxoCjI7SHG9yf',
+        placeholder: '欢迎提问和交流哟~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
