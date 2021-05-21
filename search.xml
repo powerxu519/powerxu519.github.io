@@ -313,6 +313,19 @@
       </tags>
   </entry>
   <entry>
+    <title>pip报错</title>
+    <url>/2021/05/21/pip%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<h2 id="pip-升级时报错"><a href="#pip-升级时报错" class="headerlink" title="pip 升级时报错"></a>pip 升级时报错</h2><h1 id="当pip升级后，出现pip不能使用的问题"><a href="#当pip升级后，出现pip不能使用的问题" class="headerlink" title="当pip升级后，出现pip不能使用的问题"></a>当pip升级后，出现pip不能使用的问题</h1><h1 id="报错内容：sys-stderr-write-f“ERROR-exc-“"><a href="#报错内容：sys-stderr-write-f“ERROR-exc-“" class="headerlink" title="报错内容：sys.stderr.write(f“ERROR: {exc}“)"></a>报错内容：sys.stderr.write(f“ERROR: {exc}“)</h1><p>解决方案：在linux命令行下运行如下命令：</p>
+<ol>
+<li>curl <a href="https://bootstrap.pypa.io/2.7/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/2.7/get-pip.py</a> –output get-pip.py</li>
+<li>python3 get-pip.py</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo博客之搭建</title>
     <url>/2020/04/29/hexo%E5%8D%9A%E5%AE%A2%E4%B9%8B%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h1 id="hexo博客搭建-无坑版"><a href="#hexo博客搭建-无坑版" class="headerlink" title="hexo博客搭建-无坑版"></a>hexo博客搭建-无坑版</h1><blockquote>

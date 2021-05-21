@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.powerxu.cn/"/>
-  <updated>2020-07-23T09:14:01.466Z</updated>
+  <updated>2021-05-21T08:54:28.447Z</updated>
   <id>http://www.powerxu.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>pip报错</title>
+    <link href="http://www.powerxu.cn/2021/05/21/pip%E6%8A%A5%E9%94%99/"/>
+    <id>http://www.powerxu.cn/2021/05/21/pip%E6%8A%A5%E9%94%99/</id>
+    <published>2021-05-21T08:50:00.000Z</published>
+    <updated>2021-05-21T08:54:28.447Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="pip-升级时报错"><a href="#pip-升级时报错" class="headerlink" title="pip 升级时报错"></a>pip 升级时报错</h2><h1 id="当pip升级后，出现pip不能使用的问题"><a href="#当pip升级后，出现pip不能使用的问题" class="headerlink" title="当pip升级后，出现pip不能使用的问题"></a>当pip升级后，出现pip不能使用的问题</h1><h1 id="报错内容：sys-stderr-write-f“ERROR-exc-“"><a href="#报错内容：sys-stderr-write-f“ERROR-exc-“" class="headerlink" title="报错内容：sys.stderr.write(f“ERROR: {exc}“)"></a>报错内容：sys.stderr.write(f“ERROR: {exc}“)</h1><p>解决方案：在linux命令行下运行如下命令：</p><ol><li>curl <a href="https://bootstrap.pypa.io/2.7/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/2.7/get-pip.py</a> –output get-pip.py</li><li>python3 get-pip.py</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;pip-升级时报错&quot;&gt;&lt;a href=&quot;#pip-升级时报错&quot; class=&quot;headerlink&quot; title=&quot;pip 升级时报错&quot;&gt;&lt;/a&gt;pip 升级时报错&lt;/h2&gt;&lt;h1 id=&quot;当pip升级后，出现pip不能使用的问题&quot;&gt;&lt;a href=&quot;#当pip升
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://www.powerxu.cn/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>Go基础</title>
