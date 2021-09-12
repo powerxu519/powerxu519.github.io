@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.powerxu.cn/"/>
-  <updated>2021-05-21T08:54:28.447Z</updated>
+  <updated>2021-09-12T13:23:38.560Z</updated>
   <id>http://www.powerxu.cn/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>CDA</title>
+    <link href="http://www.powerxu.cn/2021/09/12/CDA/"/>
+    <id>http://www.powerxu.cn/2021/09/12/CDA/</id>
+    <published>2021-09-12T13:43:36.864Z</published>
+    <updated>2021-09-12T13:23:38.560Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><ol><li><p>剪枝：剪枝分为前剪枝和后剪枝，前剪枝是在构造决策树是就考虑某一个节点是否对分类的准确度有影响，后剪枝是在决策树构造完成后再逐层进行评估。例如组合问题C(3,10), 回溯算法，当剩下的个数加上选中的个数&lt;需要的个数，就不需要继续向下迭代了</p></li><li><p>纯度越高，信息熵就越小，所能反应的信息量就越小。例如：体彩的赔率，下雨的概率</p></li><li><p>熵函数图像</p><p><img src="/2021/09/12/CDA/%E4%BA%8C%E7%B1%BB%E7%86%B5%E5%87%BD%E6%95%B0%E5%9B%BE%E5%83%8F.png" alt="二类熵"><br><img src="/2021/09/12/CDA/%E4%B8%89%E7%B1%BB%E7%86%B5%E5%87%BD%E6%95%B0%E5%9B%BE%E5%83%8F.png" alt="三类熵"></p></li><li><p>信息增益大，说明父节点比子节点所具有的信息熵大，那么这种划分就表示将纯度低(信息熵大)转化为纯度高(信息熵小)的节点</p></li><li><p>C4.5 是在ID3的基础上提出的，利用信息增益除以内在信息求得信息增益率，其主要解决了ID3对于多属性导致属性本身的熵就很大，以至于分类结果不准确的问题。</p></li><li><p>C4.5算法流程</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if 当前节点不纯&#123;</span><br><span class="line">     for 所有属性&#123;</span><br><span class="line">         计算当前节点(父节点)的信息熵</span><br><span class="line">         计算子节点的信息熵</span><br><span class="line">         信息增益(Gain)&#x3D;父节点信息熵-子节点信息熵</span><br><span class="line">         计算属性信息熵H</span><br><span class="line">         信息增益率(IGR)&#x3D;Gain&#x2F;H</span><br><span class="line">     &#125;</span><br><span class="line">     max(所有属性的IGR)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="CART"><a href="#CART" class="headerlink" title="CART"></a>CART</h3></li><li><p>CART只能只能构造二叉树，并且既可以做分类树(离散数据)，又可以做回归树(连续数据)</p></li><li><p>ID3和C4.5 是利用信息熵来进行决策，CART分类树是利用基尼系数进行的决策，基尼系数越小表示纯度越高</p></li><li><p>CART 决策树的剪枝主要采用的是 CCP 方法，是一种后剪枝的方法，节点的表面误差率增益值等于节点 t 的子树被剪枝后的误差变化除以剪掉的叶子数量。</p></li><li><p>当测试集的结果未知时，可以使用K折交叉验证的方法来测试训练模型</p></li></ol><h2 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h2><ol><li>先验概率： 在进行试验之前的主观和客观概率</li><li>后验概率： 在试验结果出现后，对结果概率的主管和客观判断</li><li>条件概率： 事件 A 在另外一个事件 B 已经发生条件下的发生概率，表示为 P(A|B)</li><li>贝叶斯解决的是从先验概率得出后验概率的过程</li><li>朴素贝叶斯是一种分类方法，它假设所有的属性相互独立(这在实际生活中几乎不存在)</li><li><img src="/2021/09/12/CDA/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F.png" alt="贝叶斯公式"> </li><li><img src="/2021/09/12/CDA/%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83.png" alt="正态分布概率密度函数"></li><li>常见的离散型分布：伯努利分布，二项分布，几何分布，泊松分布</li><li>常见的连续性分布：正态分布</li><li>对于连续性的分布，想要求某一点的概率值，一般可以用分段的方法来求解</li><li>高斯朴素贝叶斯：特征变量是连续变量，符合正态(高斯)分布，比如说人的身高，物体的长度。</li><li>多项式朴素贝叶斯：特征变量是离散变量，符合多项分布，在文档分类中特征变量体现在一<br>个单词出现的次数，或者是单词的 TF-IDF 值等。</li><li>伯努利朴素贝叶斯：特征变量是布尔变量，符合 0/1 分布，在文档分类中特征是单词是否<br>出现。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;决策树&quot;&gt;&lt;a href=&quot;#决策树&quot; class=&quot;headerlink&quot; title=&quot;决策树&quot;&gt;&lt;/a&gt;决策树&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;剪枝：剪枝分为前剪枝和后剪枝，前剪枝是在构造决策树是就考虑某一个节点是否对分类的准确度有影响，后剪枝是在决策树构造
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>pip报错</title>
     <link href="http://www.powerxu.cn/2021/05/21/pip%E6%8A%A5%E9%94%99/"/>
     <id>http://www.powerxu.cn/2021/05/21/pip%E6%8A%A5%E9%94%99/</id>
     <published>2021-05-21T08:50:00.000Z</published>
-    <updated>2021-05-21T08:54:28.447Z</updated>
+    <updated>2021-05-21T12:16:31.639Z</updated>
     
     <content type="html"><![CDATA[<h2 id="pip-升级时报错"><a href="#pip-升级时报错" class="headerlink" title="pip 升级时报错"></a>pip 升级时报错</h2><h1 id="当pip升级后，出现pip不能使用的问题"><a href="#当pip升级后，出现pip不能使用的问题" class="headerlink" title="当pip升级后，出现pip不能使用的问题"></a>当pip升级后，出现pip不能使用的问题</h1><h1 id="报错内容：sys-stderr-write-f“ERROR-exc-“"><a href="#报错内容：sys-stderr-write-f“ERROR-exc-“" class="headerlink" title="报错内容：sys.stderr.write(f“ERROR: {exc}“)"></a>报错内容：sys.stderr.write(f“ERROR: {exc}“)</h1><p>解决方案：在linux命令行下运行如下命令：</p><ol><li>curl <a href="https://bootstrap.pypa.io/2.7/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/2.7/get-pip.py</a> –output get-pip.py</li><li>python3 get-pip.py</li></ol>]]></content>
     
@@ -35,6 +58,8 @@
     </summary>
     
     
+      <category term="python" scheme="http://www.powerxu.cn/categories/python/"/>
+    
     
       <category term="python" scheme="http://www.powerxu.cn/tags/python/"/>
     
@@ -45,13 +70,15 @@
     <link href="http://www.powerxu.cn/2020/07/23/Go%E5%9F%BA%E7%A1%80/"/>
     <id>http://www.powerxu.cn/2020/07/23/Go%E5%9F%BA%E7%A1%80/</id>
     <published>2020-07-23T09:09:28.000Z</published>
-    <updated>2020-07-23T09:14:01.466Z</updated>
+    <updated>2021-05-21T12:20:59.241Z</updated>
     
     <summary type="html">
     
     </summary>
     
     
+    
+      <category term="golang" scheme="http://www.powerxu.cn/tags/golang/"/>
     
   </entry>
   
