@@ -318,73 +318,6 @@
       </tags>
   </entry>
   <entry>
-    <title>pip报错</title>
-    <url>/2021/05/21/pip%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<h2 id="pip-升级时报错"><a href="#pip-升级时报错" class="headerlink" title="pip 升级时报错"></a>pip 升级时报错</h2><h1 id="当pip升级后，出现pip不能使用的问题"><a href="#当pip升级后，出现pip不能使用的问题" class="headerlink" title="当pip升级后，出现pip不能使用的问题"></a>当pip升级后，出现pip不能使用的问题</h1><h1 id="报错内容：sys-stderr-write-f“ERROR-exc-“"><a href="#报错内容：sys-stderr-write-f“ERROR-exc-“" class="headerlink" title="报错内容：sys.stderr.write(f“ERROR: {exc}“)"></a>报错内容：sys.stderr.write(f“ERROR: {exc}“)</h1><p>解决方案：在linux命令行下运行如下命令：</p>
-<ol>
-<li>curl <a href="https://bootstrap.pypa.io/2.7/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/2.7/get-pip.py</a> –output get-pip.py</li>
-<li>python3 get-pip.py</li>
-</ol>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络基础</title>
-    <url>/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h1 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h1><h2 id="当今互联网基石——TCP-IP协议栈"><a href="#当今互联网基石——TCP-IP协议栈" class="headerlink" title="当今互联网基石——TCP/IP协议栈"></a>当今互联网基石——TCP/IP协议栈</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;TCP/IP传输协议，即传输控制/网络协议，也叫作网络通讯协议。它是在网络的使用中的最基本的通信协议。TCP/IP传输协议对互联网中各部分进行通信的标准和方法进行了规定。并且，TCP/IP传输协议是保证网络数据信息及时、完整传输的两个重要的协议。</p>
-<a id="more"></a>
-<p><a href="https://baike.baidu.com/item/TCP/IP%E5%8D%8F%E8%AE%AE/212915" target="_blank" rel="noopener">百度百科</a></p>
-<hr>
-<h2 id="TCP协议特点"><a href="#TCP协议特点" class="headerlink" title="TCP协议特点"></a>TCP协议特点</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;TCP被称为是面向连接的，这是因为在一个应用进程可以开始向另一个应用进程发送数据之前，这两个进程必须先相互“握手”，即必须相互发送某些预备报文，以建立确保函数传输的参数。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;TCP连接提供的是<strong>全双工服务</strong>：如果一台主机上的进程A与另一台主机上的进程B存在一条TCP连接，那么应用层数据就可以在从进程B流向进程A的同时，也从进程A流向进程B。TCP连接也是点对点的连接，即在一次单个发送方与单个接收方的连接。</p>
-<hr>
-<h2 id="TCP报文结构"><a href="#TCP报文结构" class="headerlink" title="TCP报文结构"></a>TCP报文结构</h2><p><img src="/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/TCP%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84.jpg" alt="1"><br><br>源端口号：发送方的端口号<br><br>目的端口号：接收方端口号<br><br>序号：该报文段的字节流编号<br><br>确认号：发送方期望从接收方收到的序号<br><br>首部长度：指示了32字节的首部长度，由于选项长度是不定的，当选项长度为0时，首部长度为20字节<br><br>接收窗口：用于流量控制，指示接收方愿意接受的字节数量<br><br>检验和：提供了差错检验功能<br><br>紧急数据指针：指出紧急数据<br><br>选项：用于发送方和接收方协商最大报文段长度时，或在高速网络环境下用作窗口调节因子时使用<br><br>数据：应用层数据<br></p>
-<hr>
-<h2 id="TCP连接控制-三次握手-四次挥手"><a href="#TCP连接控制-三次握手-四次挥手" class="headerlink" title="TCP连接控制(三次握手/四次挥手)"></a>TCP连接控制(三次握手/四次挥手)</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;TCP作为可靠数据连接，其连接机制起着至关作用。<br></p>
-<h3 id="三次握手TCP连接机制"><a href="#三次握手TCP连接机制" class="headerlink" title="三次握手TCP连接机制"></a>三次握手TCP连接机制</h3><ol>
-<li><p>客户端的TCP首先向服务器端的TCP发送一个特殊的TCP报文段。该报文段中不含有应用层的数据，但是在首部中的一个标志位(即<strong>SYN比特</strong>)被置为1。因此这个特殊的报文段被称为SYN报文段。另外，客户端会随机选择一个初始序号(client_isn)，并将此编号放置于该起始的TCP SYN报文段的序号字段。该报文段会被封装到一个IP数据报中，并发送给服务器。</p>
-</li>
-<li><p>一旦包含TCP SYN报文段的IP数据报到达服务器主机，服务器会从该数据报中提取出TCP SYN报文段，<strong>为该TCP连接分配TCP缓存和变量</strong>，并向该客户TCP发送允许连接的报文段。这个允许连接的报文段也不包含任何的应用层数据。但是，在该报文段的首部包含着三个重要的信息。a：<strong><em>SYN比特被置为1</em></strong>；b：<strong><em>首部确认号字段被置为client_isn+1</em></strong>；c：<strong><em>服务器选择自己的初始序号(server_isn)，并将其放置到TCP报文段首部的序号字段中。</em></strong>该允许连接的报文段称为SYNACK报文段。</p>
-</li>
-<li><p>在客户端收到SYNACK报文段后，客户也要为该链接分配缓存和变量。客户主机接着向服务器发送另外一个报文段，最后一个报文段对服务器的允许连接的报文段进行了确认，将确认号字段置为server_isn+1。此时连接已经建立，所以<strong>将SYN比特置为0</strong>。该三次握手的第三个阶段(此阶段)可以在报文段负载中携带客户到服务器的数据。<br><br><img src="/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" alt="1"></p>
-</li>
-</ol>
-<h3 id="四次挥手TCP断开机制"><a href="#四次挥手TCP断开机制" class="headerlink" title="四次挥手TCP断开机制"></a>四次挥手TCP断开机制</h3><ol>
-<li><p>客户应用进程发出一个关闭命令。这会引起客户TCP向服务器进程发送一个特殊的TCP报文段。<strong>这个特殊的报文段让其首部中的FIN比特被置为1。</strong></p>
-</li>
-<li><p>当服务器接收到该报文段后，返回一个确认报文段。</p>
-</li>
-<li><p>当服务器发送给客户端的最后一个报文段发送完成后，发送终止报文段，<strong>此报文段中的FIN比特被置为1。</strong></p>
-</li>
-<li><p>客户端接受到终止报文段之后，对服务器TCP返回确认报文，<strong>并进入到TIME_WAIT状态</strong>(典型值为一分钟或两分钟)，该状态的目的是为了确保确认报文成功送达到服务器端。<br><br><img src="/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" alt="1"></p>
-</li>
-</ol>
-<hr>
-<h2 id="TCP流量控制"><a href="#TCP流量控制" class="headerlink" title="TCP流量控制"></a>TCP流量控制</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;TCP为什么需要流量控制：<strong><em>对接收方缓存区的溢出而采取的措施。</em></strong><br><br>&nbsp;&nbsp;&nbsp;&nbsp;TCP通过让发送方维护一个称为<strong>接收窗口</strong>的变量来提供流量控制。通俗来说：接收窗口用于给发送方一个指示——接收方还有多少可用的缓存空间。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;通过下面这个例子来详细了解一下TCP的流量控制。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;假设主机A通过一条TCP连接向主机B发送一个大文件，主机B上为该链接分配了一个接受缓存，并用RcvBuffer来表示其大小。主机B上的应用从TCP缓存区读取数据时，定义以下变量：LastByteRead(主机B上的应用进程从缓存读出的数据流的最后一个字节的编号)，LastByteRcvd(从网络中到达的并且已经放入主机B接受缓存中的数据流的最后一个字节的编号)。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;由于TCP不允许已分配的缓存溢出，则有下式成立：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LastByteRcvd&nbsp;-&nbsp;LastByteRead &nbsp;&lt;=&nbsp; RcvBuffer<br><br>&nbsp;&nbsp;&nbsp;&nbsp;接受窗口用rwnd表示，其大小由缓存可用空间的数量来设置：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rwnd&nbsp;=&nbsp;RcvBuffer&nbsp;-&nbsp;[LastByteRcvd&nbsp;-&nbsp;LastByteRead]<br><br>&nbsp;&nbsp;&nbsp;&nbsp;利用变量rwnd来控制流量服务。主机B通过把当前的rwnd值(开始时，主机B设定rwnd=RcvBuffer)放入发给主机A的报文段的接收窗口字段中，通知主机A它在该链接的缓存中还有多少可用空间。因此，主机A要轮流跟踪两个变量，LastByteSent和LastByteAcked，这两个变量的差值即为主机A发送到连接中但未被确认的数据量。通过将未确认的数据量控制在rwnd以内，就可以保证主机A不会使主机B的接收缓存溢出。所以主机A在连接的整个生命周期须保证：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LastByteSent&nbsp;-&nbsp;LastByteAcked&nbsp;&lt;=&nbsp;rwnd<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>注：当主机B的接收缓存已满时，即rwnd为0，主机A继续发送只有一个字节的数据报文段，这些报文段将会被接收方确认，最终缓存区将开始清空，并且确认报文中将包含一个非0的rwnd值。</strong></p>
-<hr>
-<h2 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;TCP为什么需要拥塞控制：<strong><em>对IP网络的拥塞而采取的措施。</em></strong></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E4%B8%80%E7%82%B9%E7%82%B9.jpg" alt="1"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;TCP所采用的方法是让每一个发送方根据所感知到的网络拥塞程度来限制其能向链接发送流量的速率。<br></p>
-<ol>
-<li>TCP发送方如何限制它向其连接发送流量的速率？<br><br>&nbsp;&nbsp;&nbsp;&nbsp;答：运行在发送方的TCP拥塞控制机制跟踪一个额外的变量，即拥塞窗口(cwnd)。在一个发送方中未被确认的数据量不会超过cwnd和rwnd中的最小值，即LastByteSent&nbsp;-&nbsp;LastByteAcked&nbsp;&lt;=&nbsp;min{cwnd&nbsp;，&nbsp;rwnd}</li>
-<li>TCP发送方如何感知从它到目的地之间的路径是否存在拥塞呢？<br><br>&nbsp;&nbsp;&nbsp;&nbsp;答：我们将TCP发送方的“丢包事件”定义为：要么出现超时，要么收到来自接收方的3个冗余ACK。此时发送方就认为在该路径上出现了拥塞。注意到：当网络没有拥塞时，如果确认报文以相当慢的速率到达时，则该拥塞窗口将以相当慢的速率增加，另一方面，当确认报文以高速率到达时，拥塞窗口将迅速的增大，以使发送报文段的速率迅速增加。所以TCP被说成是<strong>自计时</strong>的。</li>
-<li>当发送方感知到端到端的拥塞时，采用何种算法来改变其发送速率呢？<br><br>&nbsp;&nbsp;&nbsp;&nbsp;答：TCP通过<strong><em>TCP拥塞控制算法</em></strong>来控制其发送报文段的速率。该算法包括3个重要部分，分别为：慢启动；拥塞避免；快速恢复。<br></li>
-</ol>
-<ul>
-<li>慢启动<br><br>当一条TCP连接开始时，cwnd通常初始置为一个MSS的较小值，这就使得初始的发送速率大约为MSS/RTT(RTT为传播时延)。在慢启动状态，cwnd的值以一个MSS开始并且每当传输的报文段首次被确认就增加一个MSS。此时发送速率呈倍数增长，直到存在一个超市指示的丢包事件，<strong>TCP发送方将cwnd设置为1并重新开始慢启动过程，还将第二个状态变量的值ssthresh设置为cwnd/2，即当前检测到拥塞时将ssthresh置为拥塞窗口值的一半</strong>。当cwnd的值到达或超过ssthresh时，TCP转移到<strong>拥塞避免模式。</strong>第二种结束慢启动的方式为，<strong>当检测到三次冗余ACK时，TCP执行一种快速重传并进入快速恢复状态。</strong></li>
-<li>拥塞避免<br><br>一旦进入拥塞避免状态，cwnd的值大约是上次遇到拥塞时的值得一半。<strong>每当新的确认报文到达时，就将cwnd的值增加一个MSS。</strong>(不同于慢启动状态下的翻倍增长)当发生超时时，cwnd的值被更新为1个MSS，ssthresh被置为cwnd的一半并进入<strong>慢启动状态</strong>。当发送端收到三次冗余ACK后，TCP将cwnd的值减半(一般置为cwnd/2+3MSS)，将ssthresh的值记录为cwnd值的一半，进入到<strong>快速恢复状态</strong>。</li>
-<li>快速恢复<br><br>在快速恢复中，对于引起TCP进入快速恢复状态的缺失报文段，对收到每个冗余ACK后，cwnd的值增加一个MSS。最终，当对丢失报文的ACK到达后，TCP在降低cwnd后进入<strong>拥塞避免状态</strong>。如果出现超时丢包事件，将cwnd的值置为1，ssthresh的值置为cwnd的一半，迁移到<strong>慢启动状态。</strong><br><br><img src="/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E6%8E%A7%E5%88%B6%E8%BF%87%E7%A8%8B.jpg" alt="对比"><br></li>
-<li><strong>注：TCP拥塞控制常常被称为加性增，乘性减拥塞控制方式*</strong><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E5%81%9C.jpg" alt="对比"><br></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>network</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python中不同赋值形式的差异</title>
     <url>/2020/04/07/Python%E4%B8%AD%E4%B8%8D%E5%90%8C%E8%B5%8B%E5%80%BC%E5%BD%A2%E5%BC%8F%E7%9A%84%E5%B7%AE%E5%BC%82/</url>
     <content><![CDATA[<h1 id="Python中的不同传递形式的差异"><a href="#Python中的不同传递形式的差异" class="headerlink" title="Python中的不同传递形式的差异"></a>Python中的不同传递形式的差异</h1><p>先来看一到题，题目是：给你一幅由 N × N 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。<br>不占用额外内存空间能否做到？</p>
@@ -477,6 +410,73 @@
 ]]></content>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pip报错</title>
+    <url>/2021/05/21/pip%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<h2 id="pip-升级时报错"><a href="#pip-升级时报错" class="headerlink" title="pip 升级时报错"></a>pip 升级时报错</h2><h1 id="当pip升级后，出现pip不能使用的问题"><a href="#当pip升级后，出现pip不能使用的问题" class="headerlink" title="当pip升级后，出现pip不能使用的问题"></a>当pip升级后，出现pip不能使用的问题</h1><h1 id="报错内容：sys-stderr-write-f“ERROR-exc-“"><a href="#报错内容：sys-stderr-write-f“ERROR-exc-“" class="headerlink" title="报错内容：sys.stderr.write(f“ERROR: {exc}“)"></a>报错内容：sys.stderr.write(f“ERROR: {exc}“)</h1><p>解决方案：在linux命令行下运行如下命令：</p>
+<ol>
+<li>curl <a href="https://bootstrap.pypa.io/2.7/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/2.7/get-pip.py</a> –output get-pip.py</li>
+<li>python3 get-pip.py</li>
+</ol>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络基础</title>
+    <url>/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h1><h2 id="当今互联网基石——TCP-IP协议栈"><a href="#当今互联网基石——TCP-IP协议栈" class="headerlink" title="当今互联网基石——TCP/IP协议栈"></a>当今互联网基石——TCP/IP协议栈</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;TCP/IP传输协议，即传输控制/网络协议，也叫作网络通讯协议。它是在网络的使用中的最基本的通信协议。TCP/IP传输协议对互联网中各部分进行通信的标准和方法进行了规定。并且，TCP/IP传输协议是保证网络数据信息及时、完整传输的两个重要的协议。</p>
+<a id="more"></a>
+<p><a href="https://baike.baidu.com/item/TCP/IP%E5%8D%8F%E8%AE%AE/212915" target="_blank" rel="noopener">百度百科</a></p>
+<hr>
+<h2 id="TCP协议特点"><a href="#TCP协议特点" class="headerlink" title="TCP协议特点"></a>TCP协议特点</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;TCP被称为是面向连接的，这是因为在一个应用进程可以开始向另一个应用进程发送数据之前，这两个进程必须先相互“握手”，即必须相互发送某些预备报文，以建立确保函数传输的参数。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;TCP连接提供的是<strong>全双工服务</strong>：如果一台主机上的进程A与另一台主机上的进程B存在一条TCP连接，那么应用层数据就可以在从进程B流向进程A的同时，也从进程A流向进程B。TCP连接也是点对点的连接，即在一次单个发送方与单个接收方的连接。</p>
+<hr>
+<h2 id="TCP报文结构"><a href="#TCP报文结构" class="headerlink" title="TCP报文结构"></a>TCP报文结构</h2><p><img src="/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/TCP%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84.jpg" alt="1"><br><br>源端口号：发送方的端口号<br><br>目的端口号：接收方端口号<br><br>序号：该报文段的字节流编号<br><br>确认号：发送方期望从接收方收到的序号<br><br>首部长度：指示了32字节的首部长度，由于选项长度是不定的，当选项长度为0时，首部长度为20字节<br><br>接收窗口：用于流量控制，指示接收方愿意接受的字节数量<br><br>检验和：提供了差错检验功能<br><br>紧急数据指针：指出紧急数据<br><br>选项：用于发送方和接收方协商最大报文段长度时，或在高速网络环境下用作窗口调节因子时使用<br><br>数据：应用层数据<br></p>
+<hr>
+<h2 id="TCP连接控制-三次握手-四次挥手"><a href="#TCP连接控制-三次握手-四次挥手" class="headerlink" title="TCP连接控制(三次握手/四次挥手)"></a>TCP连接控制(三次握手/四次挥手)</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;TCP作为可靠数据连接，其连接机制起着至关作用。<br></p>
+<h3 id="三次握手TCP连接机制"><a href="#三次握手TCP连接机制" class="headerlink" title="三次握手TCP连接机制"></a>三次握手TCP连接机制</h3><ol>
+<li><p>客户端的TCP首先向服务器端的TCP发送一个特殊的TCP报文段。该报文段中不含有应用层的数据，但是在首部中的一个标志位(即<strong>SYN比特</strong>)被置为1。因此这个特殊的报文段被称为SYN报文段。另外，客户端会随机选择一个初始序号(client_isn)，并将此编号放置于该起始的TCP SYN报文段的序号字段。该报文段会被封装到一个IP数据报中，并发送给服务器。</p>
+</li>
+<li><p>一旦包含TCP SYN报文段的IP数据报到达服务器主机，服务器会从该数据报中提取出TCP SYN报文段，<strong>为该TCP连接分配TCP缓存和变量</strong>，并向该客户TCP发送允许连接的报文段。这个允许连接的报文段也不包含任何的应用层数据。但是，在该报文段的首部包含着三个重要的信息。a：<strong><em>SYN比特被置为1</em></strong>；b：<strong><em>首部确认号字段被置为client_isn+1</em></strong>；c：<strong><em>服务器选择自己的初始序号(server_isn)，并将其放置到TCP报文段首部的序号字段中。</em></strong>该允许连接的报文段称为SYNACK报文段。</p>
+</li>
+<li><p>在客户端收到SYNACK报文段后，客户也要为该链接分配缓存和变量。客户主机接着向服务器发送另外一个报文段，最后一个报文段对服务器的允许连接的报文段进行了确认，将确认号字段置为server_isn+1。此时连接已经建立，所以<strong>将SYN比特置为0</strong>。该三次握手的第三个阶段(此阶段)可以在报文段负载中携带客户到服务器的数据。<br><br><img src="/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" alt="1"></p>
+</li>
+</ol>
+<h3 id="四次挥手TCP断开机制"><a href="#四次挥手TCP断开机制" class="headerlink" title="四次挥手TCP断开机制"></a>四次挥手TCP断开机制</h3><ol>
+<li><p>客户应用进程发出一个关闭命令。这会引起客户TCP向服务器进程发送一个特殊的TCP报文段。<strong>这个特殊的报文段让其首部中的FIN比特被置为1。</strong></p>
+</li>
+<li><p>当服务器接收到该报文段后，返回一个确认报文段。</p>
+</li>
+<li><p>当服务器发送给客户端的最后一个报文段发送完成后，发送终止报文段，<strong>此报文段中的FIN比特被置为1。</strong></p>
+</li>
+<li><p>客户端接受到终止报文段之后，对服务器TCP返回确认报文，<strong>并进入到TIME_WAIT状态</strong>(典型值为一分钟或两分钟)，该状态的目的是为了确保确认报文成功送达到服务器端。<br><br><img src="/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" alt="1"></p>
+</li>
+</ol>
+<hr>
+<h2 id="TCP流量控制"><a href="#TCP流量控制" class="headerlink" title="TCP流量控制"></a>TCP流量控制</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;TCP为什么需要流量控制：<strong><em>对接收方缓存区的溢出而采取的措施。</em></strong><br><br>&nbsp;&nbsp;&nbsp;&nbsp;TCP通过让发送方维护一个称为<strong>接收窗口</strong>的变量来提供流量控制。通俗来说：接收窗口用于给发送方一个指示——接收方还有多少可用的缓存空间。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;通过下面这个例子来详细了解一下TCP的流量控制。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;假设主机A通过一条TCP连接向主机B发送一个大文件，主机B上为该链接分配了一个接受缓存，并用RcvBuffer来表示其大小。主机B上的应用从TCP缓存区读取数据时，定义以下变量：LastByteRead(主机B上的应用进程从缓存读出的数据流的最后一个字节的编号)，LastByteRcvd(从网络中到达的并且已经放入主机B接受缓存中的数据流的最后一个字节的编号)。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;由于TCP不允许已分配的缓存溢出，则有下式成立：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LastByteRcvd&nbsp;-&nbsp;LastByteRead &nbsp;&lt;=&nbsp; RcvBuffer<br><br>&nbsp;&nbsp;&nbsp;&nbsp;接受窗口用rwnd表示，其大小由缓存可用空间的数量来设置：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rwnd&nbsp;=&nbsp;RcvBuffer&nbsp;-&nbsp;[LastByteRcvd&nbsp;-&nbsp;LastByteRead]<br><br>&nbsp;&nbsp;&nbsp;&nbsp;利用变量rwnd来控制流量服务。主机B通过把当前的rwnd值(开始时，主机B设定rwnd=RcvBuffer)放入发给主机A的报文段的接收窗口字段中，通知主机A它在该链接的缓存中还有多少可用空间。因此，主机A要轮流跟踪两个变量，LastByteSent和LastByteAcked，这两个变量的差值即为主机A发送到连接中但未被确认的数据量。通过将未确认的数据量控制在rwnd以内，就可以保证主机A不会使主机B的接收缓存溢出。所以主机A在连接的整个生命周期须保证：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LastByteSent&nbsp;-&nbsp;LastByteAcked&nbsp;&lt;=&nbsp;rwnd<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>注：当主机B的接收缓存已满时，即rwnd为0，主机A继续发送只有一个字节的数据报文段，这些报文段将会被接收方确认，最终缓存区将开始清空，并且确认报文中将包含一个非0的rwnd值。</strong></p>
+<hr>
+<h2 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;TCP为什么需要拥塞控制：<strong><em>对IP网络的拥塞而采取的措施。</em></strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E4%B8%80%E7%82%B9%E7%82%B9.jpg" alt="1"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;TCP所采用的方法是让每一个发送方根据所感知到的网络拥塞程度来限制其能向链接发送流量的速率。<br></p>
+<ol>
+<li>TCP发送方如何限制它向其连接发送流量的速率？<br><br>&nbsp;&nbsp;&nbsp;&nbsp;答：运行在发送方的TCP拥塞控制机制跟踪一个额外的变量，即拥塞窗口(cwnd)。在一个发送方中未被确认的数据量不会超过cwnd和rwnd中的最小值，即LastByteSent&nbsp;-&nbsp;LastByteAcked&nbsp;&lt;=&nbsp;min{cwnd&nbsp;，&nbsp;rwnd}</li>
+<li>TCP发送方如何感知从它到目的地之间的路径是否存在拥塞呢？<br><br>&nbsp;&nbsp;&nbsp;&nbsp;答：我们将TCP发送方的“丢包事件”定义为：要么出现超时，要么收到来自接收方的3个冗余ACK。此时发送方就认为在该路径上出现了拥塞。注意到：当网络没有拥塞时，如果确认报文以相当慢的速率到达时，则该拥塞窗口将以相当慢的速率增加，另一方面，当确认报文以高速率到达时，拥塞窗口将迅速的增大，以使发送报文段的速率迅速增加。所以TCP被说成是<strong>自计时</strong>的。</li>
+<li>当发送方感知到端到端的拥塞时，采用何种算法来改变其发送速率呢？<br><br>&nbsp;&nbsp;&nbsp;&nbsp;答：TCP通过<strong><em>TCP拥塞控制算法</em></strong>来控制其发送报文段的速率。该算法包括3个重要部分，分别为：慢启动；拥塞避免；快速恢复。<br></li>
+</ol>
+<ul>
+<li>慢启动<br><br>当一条TCP连接开始时，cwnd通常初始置为一个MSS的较小值，这就使得初始的发送速率大约为MSS/RTT(RTT为传播时延)。在慢启动状态，cwnd的值以一个MSS开始并且每当传输的报文段首次被确认就增加一个MSS。此时发送速率呈倍数增长，直到存在一个超市指示的丢包事件，<strong>TCP发送方将cwnd设置为1并重新开始慢启动过程，还将第二个状态变量的值ssthresh设置为cwnd/2，即当前检测到拥塞时将ssthresh置为拥塞窗口值的一半</strong>。当cwnd的值到达或超过ssthresh时，TCP转移到<strong>拥塞避免模式。</strong>第二种结束慢启动的方式为，<strong>当检测到三次冗余ACK时，TCP执行一种快速重传并进入快速恢复状态。</strong></li>
+<li>拥塞避免<br><br>一旦进入拥塞避免状态，cwnd的值大约是上次遇到拥塞时的值得一半。<strong>每当新的确认报文到达时，就将cwnd的值增加一个MSS。</strong>(不同于慢启动状态下的翻倍增长)当发生超时时，cwnd的值被更新为1个MSS，ssthresh被置为cwnd的一半并进入<strong>慢启动状态</strong>。当发送端收到三次冗余ACK后，TCP将cwnd的值减半(一般置为cwnd/2+3MSS)，将ssthresh的值记录为cwnd值的一半，进入到<strong>快速恢复状态</strong>。</li>
+<li>快速恢复<br><br>在快速恢复中，对于引起TCP进入快速恢复状态的缺失报文段，对收到每个冗余ACK后，cwnd的值增加一个MSS。最终，当对丢失报文的ACK到达后，TCP在降低cwnd后进入<strong>拥塞避免状态</strong>。如果出现超时丢包事件，将cwnd的值置为1，ssthresh的值置为cwnd的一半，迁移到<strong>慢启动状态。</strong><br><br><img src="/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E6%8E%A7%E5%88%B6%E8%BF%87%E7%A8%8B.jpg" alt="对比"><br></li>
+<li><strong>注：TCP拥塞控制常常被称为加性增，乘性减拥塞控制方式*</strong><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E5%81%9C.jpg" alt="对比"><br></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>network</tag>
       </tags>
   </entry>
 </search>
