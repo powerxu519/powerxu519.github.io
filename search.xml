@@ -468,22 +468,6 @@ prediction = gmm.fit_predict(data)</code></pre></li>
       </tags>
   </entry>
   <entry>
-    <title>pip报错</title>
-    <url>/2021/05/21/pip%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<h2 id="pip-升级时报错"><a href="#pip-升级时报错" class="headerlink" title="pip 升级时报错"></a>pip 升级时报错</h2><h1 id="当pip升级后，出现pip不能使用的问题"><a href="#当pip升级后，出现pip不能使用的问题" class="headerlink" title="当pip升级后，出现pip不能使用的问题"></a>当pip升级后，出现pip不能使用的问题</h1><h1 id="报错内容：sys-stderr-write-f“ERROR-exc-“"><a href="#报错内容：sys-stderr-write-f“ERROR-exc-“" class="headerlink" title="报错内容：sys.stderr.write(f“ERROR: {exc}“)"></a>报错内容：sys.stderr.write(f“ERROR: {exc}“)</h1><p>解决方案：在linux命令行下运行如下命令：</p>
-<ol>
-<li>curl <a href="https://bootstrap.pypa.io/2.7/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/2.7/get-pip.py</a> –output get-pip.py</li>
-<li>python3 get-pip.py</li>
-</ol>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>计算机网络基础</title>
     <url>/2020/01/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h1><h2 id="当今互联网基石——TCP-IP协议栈"><a href="#当今互联网基石——TCP-IP协议栈" class="headerlink" title="当今互联网基石——TCP/IP协议栈"></a>当今互联网基石——TCP/IP协议栈</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;TCP/IP传输协议，即传输控制/网络协议，也叫作网络通讯协议。它是在网络的使用中的最基本的通信协议。TCP/IP传输协议对互联网中各部分进行通信的标准和方法进行了规定。并且，TCP/IP传输协议是保证网络数据信息及时、完整传输的两个重要的协议。</p>
@@ -532,6 +516,22 @@ prediction = gmm.fit_predict(data)</code></pre></li>
 ]]></content>
       <tags>
         <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pip报错</title>
+    <url>/2021/05/21/pip%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<h2 id="pip-升级时报错"><a href="#pip-升级时报错" class="headerlink" title="pip 升级时报错"></a>pip 升级时报错</h2><h1 id="当pip升级后，出现pip不能使用的问题"><a href="#当pip升级后，出现pip不能使用的问题" class="headerlink" title="当pip升级后，出现pip不能使用的问题"></a>当pip升级后，出现pip不能使用的问题</h1><h1 id="报错内容：sys-stderr-write-f“ERROR-exc-“"><a href="#报错内容：sys-stderr-write-f“ERROR-exc-“" class="headerlink" title="报错内容：sys.stderr.write(f“ERROR: {exc}“)"></a>报错内容：sys.stderr.write(f“ERROR: {exc}“)</h1><p>解决方案：在linux命令行下运行如下命令：</p>
+<ol>
+<li>curl <a href="https://bootstrap.pypa.io/2.7/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/2.7/get-pip.py</a> –output get-pip.py</li>
+<li>python3 get-pip.py</li>
+</ol>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
 </search>
