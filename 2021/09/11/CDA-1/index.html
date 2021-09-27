@@ -93,8 +93,9 @@
 <meta property="og:image" content="http://www.powerxu.cn/2021/09/11/CDA-1/%E4%B8%89%E7%B1%BB%E7%86%B5%E5%87%BD%E6%95%B0%E5%9B%BE%E5%83%8F.png">
 <meta property="og:image" content="http://www.powerxu.cn/2021/09/11/CDA-1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F.png">
 <meta property="og:image" content="http://www.powerxu.cn/2021/09/11/CDA-1/%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83.png">
+<meta property="og:image" content="http://www.powerxu.cn/2021/09/11/CDA-1/%E9%AB%98%E6%96%AF%E6%A0%B8.png">
 <meta property="article:published_time" content="2021-09-11T14:32:20.000Z">
-<meta property="article:modified_time" content="2021-09-12T14:46:29.630Z">
+<meta property="article:modified_time" content="2021-09-27T14:45:43.382Z">
 <meta property="article:author" content="Powerxu">
 <meta property="article:tag" content="CDA">
 <meta name="twitter:card" content="summary">
@@ -411,6 +412,61 @@
 <li>多项式朴素贝叶斯：特征变量是离散变量，符合多项分布，在文档分类中特征变量体现在一<br>个单词出现的次数，或者是单词的 TF-IDF 值等。</li>
 <li>伯努利朴素贝叶斯：特征变量是布尔变量，符合 0/1 分布，在文档分类中特征是单词是否<br>出现。</li>
 </ol>
+<h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><ul>
+<li>有监督学习：待分类数据集有标签</li>
+<li>无监督学习：待分类数据集无标签</li>
+</ul>
+<ol>
+<li><p>支持向量机既可以做回归也可以做分类</p>
+</li>
+<li><p>对于线性可分的数据集而言，SVM所寻找的最优解就是使得分类间隔最大的可行解</p>
+</li>
+<li><p>对于非线性可分的数据集，采用核函数的方式，将样本从原始空间映射到一个更高维的特质空间中，使得样本在新的空间中线性可分</p>
+</li>
+<li><p>最常用的核函数有线性核、多项式核、高斯核、拉普拉斯核、sigmoid 核，或者是这些核函数的组合<br><img src="/2021/09/11/CDA-1/%E9%AB%98%E6%96%AF%E6%A0%B8.png" alt="高斯核"></p>
+</li>
+<li><p>对于多分类数据集而言，常用的方法有两种</p>
+<ul>
+<li>一对多—&gt; 针对 K 个分类，需要训练 K 个分类器，分类速度较快，但训练速度较慢，因为每个分类器都需要对全部样本进行训练，而且负样本数量远大于正样本数量，会造成样本不对称的情况，而且当增加新的分类，比如第 K+1 类时，需要重新对分类器进行构造</li>
+<li>一对一—&gt; 在新增一类时，不需要重新训练所有的 SVM，只需要训练和新增这一类样本的分类器。而且这种方式在训练单个 SVM 模型的时候，训练速度快。但这种方法的不足在于，分类器的个数与 K 的平方成正比(C(k,2))，所以当 K 较大时，训练和测试的时间会比较慢。</li>
+</ul>
+</li>
+<li><pre><code>model = svm.SVC(kernel=&quot;rbf&quot;, C=1.0, gamma=&quot;auto&quot;)
+# kernel: linear, poly, rbf(默认), sigmoid
+# C: 惩罚函数，C越大分类准确度越高，泛化能力越差，默认为1
+# gamma: 核函数系数，默认为样本特征数的倒数，即gamma=1/n_features
+model.fit(train_X, train_Y)
+prediction = model.predict(test_X)
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## KNN</span><br><span class="line">1. KNN就是通过距离待测数据最近的K个数据的分类结果来预测待测数据的结果</span><br><span class="line">2. K的选取应该是实验出的结果，常使用交叉验证的方式求K</span><br><span class="line">3. 计算距离</span><br><span class="line">   * 欧氏距离</span><br><span class="line">   * 曼哈顿距离</span><br><span class="line">   * 闵可夫斯基距离</span><br><span class="line">   * 切比雪夫距离</span><br><span class="line">   * 余弦距离</span><br><span class="line">4. KD树利用分治的思想将查询K近邻的时间复杂度降低到O(logn)</span><br><span class="line">5.</span><br></pre></td></tr></table></figure>
+# 分类
+from sklearn.beighbors import KNeighborsClassifier
+# 回归
+from sklearn.beighbors import KNeighborsRegressor
+# n_neighbors K值，默认为5
+# weights 1. uniform 表示所哟邻居的权重相同  2. distance 权重为距离的倒数，即与距离成反比  3. 自定义函数
+# algorithm  1. auto 默认自动选择  2. kd_tree 在大维度数据下效果不好  3. ball_tree 球树，适用于大维度数据  4. brute 暴力搜索，大维度数据效率低
+# leaf_size 表示构造KD树和球树时的叶子数，默认为30
+KNeighborsClassifier(n_neighbors=5, weights=&quot;uniform&quot;, algorithm=&quot;auto&quot;, leaf_size=30)
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## K-means</span><br><span class="line">1. K-means是非监督算法，用于聚类</span><br><span class="line">2. 步骤：</span><br><span class="line">   * 随机选取K个点作为初始的类中心点</span><br><span class="line">   * 将其余点分配到最近的类中心点，然后重新计算每个类的中心点</span><br><span class="line">   * 重复上一步，直到类不再发生改变，或者达到最大的迭代次数</span><br><span class="line">3.</span><br></pre></td></tr></table></figure>
+from sklearn.cluster import KMeans
+def __init__(self, n_clusters=8, *, init=&apos;k-means++&apos;, n_init=10,
+         max_iter=300, tol=1e-4, precompute_distances=&apos;deprecated&apos;,
+         verbose=0, random_state=None, copy_x=True,
+         n_jobs=&apos;deprecated&apos;, algorithm=&apos;auto&apos;):
+kmeans = KMeans(n_clusters=2)
+kmeans/fit_predict(data)
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## EM</span><br><span class="line">1. EM 是一种聚类算法，基于极大似然估计理论 </span><br><span class="line">2. E: 初始化参数来估计变量，M: 通过变量反推参数</span><br><span class="line">3. 可以采用GMM 和 HMM 模型</span><br><span class="line">4. K-means 中每条数据只能有一种类别，被称作硬聚类算法；EM 在运算过程中，每条数据可能和多个聚类相关，被称作软聚类算法。</span><br><span class="line">5.</span><br></pre></td></tr></table></figure>
+from sklearn.mixture import GaussianMixture
+
+def __init__(self, n_components=1, *, covariance_type=&apos;full&apos;, tol=1e-3,
+         reg_covar=1e-6, max_iter=100, n_init=1, init_params=&apos;kmeans&apos;,
+         weights_init=None, means_init=None, precisions_init=None,
+         random_state=None, warm_start=False,
+         verbose=0, verbose_interval=10): 
+
+gmm = GaussianMixture(n_components=30)
+prediction = gmm.fit_predict(data)</code></pre></li>
+</ol>
 
       
     </div>
@@ -655,7 +711,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树"><span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CART"><span class="nav-text">CART</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#朴素贝叶斯"><span class="nav-text">朴素贝叶斯</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树"><span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CART"><span class="nav-text">CART</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#朴素贝叶斯"><span class="nav-text">朴素贝叶斯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM"><span class="nav-text">SVM</span></a></li></ol></div>
             
 
           </div>
